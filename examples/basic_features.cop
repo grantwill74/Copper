@@ -1,0 +1,74 @@
+/*
+	This sample program demonstrates the basic features
+	supported by Copper. In particular, it demonstrates 
+	components, ports, and connections.
+*/
+
+using System;
+
+/*
+	Components are declared with the 'component' keyword.
+	Components are capable of containing ports.
+*/
+component A {
+	/*
+		Ports are declared with the 'port' keyword.
+		Ports can contain methods declared as 'in' or 'out'.
+		'In' methods are provided by the component connected 
+		externally. 'Out' methods are normally provided by 
+		the component that contains the port.
+	*/
+	public port p {
+		out void say_hello(); 
+		in string get_name();
+	}
+	
+	/* this method implements the 'out' declaration 'say_hello'
+	   for the port 'p'. */
+	void say_hello() {
+		/* this invocation calls the 'get_name()' function
+		   through port p. */
+		Console.WriteLine("Hello to " + p.get_name() + "!");
+	}
+}
+
+component B {
+	public port p {
+		in void say_hello();
+		out string get_name();
+	}
+	
+	public B( string name ) {
+		this.name = name;
+	}
+	
+	private string name;
+	
+	string get_name() {
+		return name;
+	}
+	
+	public void test_hello() {
+		Console.WriteLine(
+			"I expect my connection to say hello to me:");
+		
+		//invoke say_hello on connected component 
+		p.say_hello();
+	}
+}
+
+
+component BasicFeatures {
+	public static void Main(string[] args) {
+		//create instances of each component:
+		var a = new A();
+		var b = new B("Bob");
+		
+		//connect the ports of a and b together
+		connect a.p, b.p;
+		
+		//test that the connection works by invoking a method 
+		//on 'b' which uses the port to communicate.
+		b.test_hello();
+	}
+}

@@ -1,0 +1,7 @@
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\bin\Release\Copper.dll
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\bin\Release\Copper.pdb
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\obj\Release\Copper.dll
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\obj\Release\Copper.pdb
+C:\Users\Grant\Documents\research\Copper\source\bin\Copper.dll
+C:\Users\Grant\Documents\research\Copper\source\bin\Copper.pdb
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\obj\Release\Copper.csprojResolveAssemblyReference.cache

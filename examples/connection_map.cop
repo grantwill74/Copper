@@ -1,0 +1,84 @@
+/* 
+	This sample demonstrates the connection map
+	feature in Copper. This feature allows two incompatible ports 
+	to be translated where they are attached. It makes it convenient
+	to express delegation and adaptation.
+*/
+
+using System;
+
+component Person {
+	public port p {
+		out string get_person_name();
+		in string get_occupation_name();
+	}
+	
+	string get_person_name() { return "Bob"; }
+	
+	public void print_employee_and_job() {
+		Console.WriteLine("Employee: " + get_person_name() );
+		Console.WriteLine("Job: " + p.get_occupation_name() );
+	}
+}
+
+component Occupation {
+	/*
+		This port is not compatible with Person.p for 2 reasons:
+		1. The first method is named "person_name" instead of 
+			"get_person_name".
+		2. The second method returns information as a tuple 
+			parameter instead of a return value. 
+	*/
+	public port p {
+		in string person_name();
+		out Tuple<string, string> get_occupation_info();
+	}
+	
+	public Tuple<string, string> get_occupation_info() {
+		var name = "Computer Programmer";
+		var desc = "This person writes computer programs.";
+		return Tuple.Create<string, string>( name, desc );
+	}
+	
+	public void print_job_and_holder() {
+		string name = "", desc = "";
+		var info = get_occupation_info();
+		name = info.Item1;
+		desc = info.Item2;
+		
+		Console.WriteLine("Job Name: " + name );
+		Console.WriteLine("Description: " + desc );
+		Console.WriteLine("Currently: " + p.person_name() );
+	}
+}
+
+class TestConnectionMap {
+	
+	public static void Main( string[] args ) {
+		var occ = new Occupation();
+		var pers = new Person();
+		
+		/*
+			Use a connection map to fix the incompatibilites
+			between the two ports. The first incompatibility 
+			is a simple name replacement; the second has an 
+			incompatible return value. We could use the arrow (=>)
+			like the first example, but we demonstrate the 
+			long style to show the syntax.
+		*/
+		connect occ.p, pers.p with {
+			person_name() => Second.get_person_name();
+			string get_occupation_name() {
+				//string name = "", desc = "";
+				var info = First.get_occupation_info();
+				return info.Item1;
+			}
+		};
+		
+		Console.WriteLine("Testing employee printing.");
+		pers.print_employee_and_job();
+		Console.WriteLine("--------------------------");
+		Console.WriteLine("Testing occupation printing.");
+		occ.print_job_and_holder();
+	}
+}

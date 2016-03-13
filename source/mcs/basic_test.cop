@@ -1,0 +1,190 @@
+﻿using System;
+using System.Diagnostics;
+using System.Reflection;
+using System.Dynamic;
+using System.Collections.Generic;
+using System.Linq;
+using Copper;
+
+//This is a component class because it contains at least one Port
+//A port acts like a special interface that is distinct from the class's
+//normal interface.
+/*
+component ClassA
+{
+	//This is a port declaration. It contains a list of methods:
+	//	'in' methods are provided by whomever is connected to the port
+	//	'out' methods are provided by the containing class of the port
+	public port port_a {
+		out void fn_a(); //method provided by containing class
+		in void fn_b();	 //method required from another class
+	}
+
+	public multiport port_m {
+		out void fn_a();
+		in void fn_b();
+	}
+	
+	public static port port_y {
+		out void test_static();
+	}
+	
+	public static void test_static() {
+		Console.WriteLine("Static works");
+	}
+	
+	//When an outside class has a port that connects to 'port_a', it 
+	//can access this method through the port. 
+	public void fn_a() {
+		Console.WriteLine("Hello from A!");
+	}
+	
+	public void multi_call() {
+		port_m.fn_b();
+	}
+
+	//This method uses a port to dispatch a message. Even though messages
+	//are currently dispatched dynamically, 
+	public void greet_other() {
+		port_a.fn_b(); //call this method through the port
+	}
+}
+
+//ClassB contains a port which is compatible with the port in ClassA
+//It has the same method names, but the directions are reversed.
+component ClassB
+{
+	public port port_b {
+		in void fn_a();
+		out void fn_b();
+	}
+	
+	public port port_c {
+		in void fn_a();
+		out void fn_b();
+	}
+	
+	public static port port_z {
+		in void test_static();
+	}
+
+	public void fn_b() {
+		Console.WriteLine("Hello from B!");
+	}
+
+	public void greet_other() {
+		port_b.fn_a();
+	}
+}
+*/
+
+component IncDel {
+	public string p_dub( double a ) {
+		Console.WriteLine(a);
+		return "HELLO WORLD";
+	}
+}
+
+component IncA {
+	public port p {
+		out string p_dub( double a );
+	}
+}
+
+component IncB {
+	public port p {
+		in string p_dub2( int a );
+		in string q();
+	}
+	
+	public void test() {
+		Console.WriteLine( p.p_dub2(45) );
+		Console.WriteLine( p.q() );
+	}
+}
+	
+component ComMultiA {
+	public multiport p {
+		out void say_hello();
+		in string get_string();
+	}
+	
+	void say_hello() {
+		Console.WriteLine("Hello.");
+	}
+}
+
+component ComMultiB {
+	public port p {
+		in void say_hello();
+		out string get_string();
+	}
+	
+	static int count = 1;
+	int my_count = 0;
+	
+	public ComMultiB() {
+		my_count = count++;
+	}
+	
+	string get_string() {
+		return "My number is " + my_count;
+	}
+}
+	
+class basic_test 
+{
+	public static void Main(string[] args) {
+		//var a = new ClassA();
+		//var b = new ClassB();
+		
+		try {
+			var a = new ComMultiA();
+			var bs = new ComMultiB[15];
+			
+			for( int i = 0; i < bs.Length; i++ )
+				bs[i] = new ComMultiB();
+			
+			foreach ( var b in bs ) {
+				connect a.p, b.p;
+			}
+			
+			//disconnect a.p, bs[4].p;
+			
+			List<object> l = a.p.get_string();
+			
+			foreach ( var s in l ) {
+				Console.WriteLine(s);
+			}
+			
+			/*
+			var a = new IncA();
+			var b = new IncB();
+			
+			
+			attach b.p, a.p  with {
+				//p_dub2(int x) => First.p_dub((double)x);
+				string p_dub2(int x) { Second.p_dub((double)x); return "Q"; }
+				q() => "lol";
+			};
+			
+			
+			IncDel d = new IncDel();
+			
+			embed a.p, d;
+			
+			b.test();
+			*/
+
+		}
+		catch( ConnectionIncompatibleError e ) {
+			Console.WriteLine("Attempted to connect incompatible ports.");
+
+			Console.WriteLine("Missing the following 'out' methods from the second port: ");
+			foreach( var method in e.IncompatibleMethods ) {
+				Console.WriteLine(method.Name);
+			}
+		}
+		
+	}
+}

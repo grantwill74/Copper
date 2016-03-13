@@ -1,0 +1,22 @@
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\csharp\Copper\bin\Debug\Copper.dll
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\csharp\Copper\bin\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\csharp\Copper\obj\Debug\Copper.csprojResolveAssemblyReference.cache
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\csharp\Copper\obj\Debug\Copper.dll
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\csharp\Copper\obj\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\Copper\bin\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\Copper\obj\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\Copper\bin\Debug\Copper.exe
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\Copper\obj\Debug\Copper.exe
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\tools\Copper\obj\Debug\Copper.csprojResolveAssemblyReference.cache
+C:\Users\Grant\Documents\research\Copper\tools\Copper\bin\Debug\Copper.exe
+C:\Users\Grant\Documents\research\Copper\tools\Copper\bin\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\Copper\tools\Copper\obj\Debug\Copper.csprojResolveAssemblyReference.cache
+C:\Users\Grant\Documents\research\Copper\tools\Copper\obj\Debug\Copper.exe
+C:\Users\Grant\Documents\research\Copper\tools\Copper\obj\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\bin\Debug\Copper.dll
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\bin\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\obj\Debug\Copper.csprojResolveAssemblyReference.cache
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\obj\Debug\Copper.dll
+C:\Users\Grant\Documents\research\Copper\source\tools\Copper\obj\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\Copper\source\bin\debug\Copper.dll
+C:\Users\Grant\Documents\research\Copper\source\bin\debug\Copper.pdb

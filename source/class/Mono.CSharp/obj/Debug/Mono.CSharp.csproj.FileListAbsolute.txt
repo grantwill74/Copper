@@ -1,0 +1,7 @@
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\class\Mono.CSharp\bin\Debug\Mono.CSharp.pdb
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\class\Mono.CSharp\obj\Debug\Mono.CSharp.pdb
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\class\Mono.CSharp\obj\Debug\Mono.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\class\Mono.CSharp\bin\Debug\Copper.dll
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\class\Mono.CSharp\bin\Debug\Copper.pdb
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\class\Mono.CSharp\bin\Debug\Mono.CSharp.exe
+C:\Users\Grant\Documents\research\fse submission\mono-master\mcs\class\Mono.CSharp\obj\Debug\Mono.CSharp.exe

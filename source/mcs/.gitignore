@@ -1,0 +1,7 @@
+y.output
+*.user
+*.csproj.user
+*.pdb
+*.suo
+*.vshost*
+obj

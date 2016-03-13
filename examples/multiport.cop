@@ -1,0 +1,73 @@
+/* 
+	This sample demonstrates the multiport feature in Copper. 
+	This feature allows convenient one-to-many communication 
+	between components.
+*/
+
+using System;
+
+component Server {
+
+	/*
+		A multiport can be connected to multiple other ports.
+		When an 'in' method is invoked through a multiport, 
+		the method is sent to all connected ports, and the 
+		return values are agregated into a list.
+	*/
+	public multiport clients {
+		out string get_server_name();
+		in string get_client_id();
+	}
+	
+	string get_server_name() {
+		return "Server v1.2.3";
+	}
+	
+	public void print_info() {
+		Console.WriteLine("Printing server info:");
+		Console.WriteLine("Connected Clients: " );
+		
+		/* 'ids' is a list of return values aggregated from all
+			connected components. */
+		var ids = clients.get_client_id();
+		
+		foreach( var id in ids ) 
+			Console.WriteLine( "    " + id );
+	}
+}
+
+component Client {
+	public port server {
+		in string get_server_name();
+		out string get_client_id();
+	}
+	
+	int id;
+	
+	public Client( int my_id ) {
+		id = my_id;
+	}
+	
+	string get_client_id() {
+		return "Client " + id;
+	}
+}
+
+
+class MultiportTest {
+	public static void Main( string[] args ) {
+		var server = new Server();
+		
+		for( int i = 0; i < 5; i++ ) {
+			var client = new Client(i + 1);
+			
+			/* server.client is a multiport, so this statement
+				adds client.server to the list of connected ports. */
+			connect server.clients, client.server;
+		}
+		
+		/* this method call prints all the connected clients 
+			using the multiport. */
+		server.print_info();
+	}
+}

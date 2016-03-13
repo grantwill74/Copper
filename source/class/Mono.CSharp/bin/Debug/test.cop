@@ -1,0 +1,8 @@
+public class A {
+	public port B {
+		out void a();
+	}
+	public void a() { 
+		Console.WriteLine( "lol" ); 
+	}
+}

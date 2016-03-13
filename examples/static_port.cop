@@ -1,0 +1,59 @@
+/* 
+	This sample demonstrates the static ports feature in Copper. 
+	This feature allows ports to be static, so that they can 
+	be associated with types rather than instances.
+*/
+
+using System;
+
+/* 
+	This static component contains a list of static 
+	methods provided through a port. This port does 
+	not need to be a multiport, because it does not 
+	need to be attached to be used.
+*/
+static component StaticLibrary {
+	public static port user {
+		out double times2( double d );
+		out double half( double d );
+	}
+	
+	static double times2( double d ) {
+		return d * 2.0;
+	}
+	
+	static double half( double d ) {
+		return d / 2.0;
+	}
+}
+
+/*
+	This is a non-static component, which is connected 
+	to the static port of StaticLibrary.
+*/
+component LibraryUser {
+	public port library {
+		in double times2( double d );
+		in double half( double d );
+	}
+	
+	public void test_library() {
+		double x = 12.0;
+		
+		Console.WriteLine( "x = " + x );
+		Console.WriteLine( "times2 = " + library.times2(x) );
+		Console.WriteLine( "half = " + library.half(x) );
+	}
+}
+
+class StaticPortTest {
+	public static void Main( string[] args ) {
+		var user = new LibraryUser();
+		
+		//Attach the user's port to the static port 
+		attach user.library, StaticLibrary.user;
+		
+		// Invoke a method that uses the static library 
+		user.test_library();
+	}
+}

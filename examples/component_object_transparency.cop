@@ -1,0 +1,68 @@
+/* 
+	This sample demonstrates the component/object transparency
+	feature in Copper. This feature allows ordinary objects to 
+	appear as though they were components.
+*/
+
+using System;
+
+class OrdinaryObject {
+	public void say_hello() {
+		Console.WriteLine("Hello from an ordinary object!");
+	}
+}
+
+static class OrdinaryClass {
+	public static void say_hello() {
+		Console.WriteLine("Hello from a static method!");
+	}
+}
+
+component MyComponent {
+	port p {
+		in void say_hello();
+	}
+	
+	void test_connection() {
+		Console.WriteLine(
+			"I expect the other class/object to say hello:");
+		
+		//invoke the method over the port
+		p.say_hello();
+	}
+	
+	public static void Main( string[] args ) {
+		var ordinary_obj = new OrdinaryObject();
+		var my_object = new MyComponent();
+		
+		/*
+			This statement allows the component to take advantage
+			of methods provided by the ordinary object or class.
+			Note that we use 'attach' rather than 'connect', because 
+			connect a, b; essentially means:
+			attach a, b;
+			attach b, a;
+			Ordinary objects cannot be attached to anything unless
+			they implement the IConnectable interface, so we use 
+			the 'attach' command to ensure that only the port 
+			is being attached.
+		*/
+		attach my_object.p, ordinary_obj;
+		
+		//run the test
+		my_object.test_connection();
+		
+		Console.WriteLine("------------");
+		
+		/* 
+			Now we attach a class instead of an object in order 
+			to demonstrate how we can use static methods beloning 
+			to a static library through a port.
+		*/
+		attach my_object.p, typeof(OrdinaryClass);
+		
+		//run the test 
+		my_object.test_connection();
+		
+	}
+}
