@@ -1,4 +1,4 @@
-The Copper library and the copper compiler is 
+The Copper library and the copper compiler are
 (c) SEEL Lab at Louisiana State University, 2016
 
 This statement of ownership does not apply to the Mono C# Compiler 

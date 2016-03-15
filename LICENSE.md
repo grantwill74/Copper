@@ -2,14 +2,24 @@
 This file describes the licenses of the different pieces of 
 software distributed with Copper. 
 
+## Disclaimer
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+DEALINGS IN THE SOFTWARE.
+
 ## License Texts 
 Parts of this software are licensed under a variety of different
 terms. Copies of some of these licenses are provided in the 
 following files:
-	* GNU GPL: details avaliable in the file LICENSE.GPL
-	* GNU LGPL: details available in the file LICENSE.LGPL
-	* MIT X11: text available in the file MIT.X11
-	* MPL: text available in the file LICENSE.MPL
+*	GNU GPL: details avaliable in the file LICENSE.GPL
+*	GNU LGPL: details available in the file LICENSE.LGPL
+*	MIT X11: text available in the file MIT.X11
+*	MPL: text available in the file LICENSE.MPL
 
 ## License Choices
 The software contained in this package is broken into multiple 

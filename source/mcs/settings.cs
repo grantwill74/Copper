@@ -351,7 +351,16 @@ namespace Mono.CSharp {
 				"   http://www.mono-project.com\n\n" +
 
 				"The compiler was written by Miguel de Icaza, Ravi Pratap, Martin Baulig, Marek Safar, Raja R Harinath, Atushi Enomoto");
-		}
+
+            output.WriteLine( "----------------------" );
+
+            output.WriteLine(
+                "The Copper compiler, as a derived work of mcs, is\n" +
+                "Copyright 2016, SeelLab (at Louisiana State University).\n\n" +
+                "The code specific to the Copper compiler was written by \n" +
+                "Grant Williams." );
+            
+        }
 
 		public CompilerSettings ParseArguments (string[] args)
 		{
@@ -1553,8 +1562,9 @@ namespace Mono.CSharp {
 		{
 			output.WriteLine (
 				"Mono C# compiler, Copyright 2001-2011 Novell, Inc., Copyright 2011-2012 Xamarin, Inc\n" +
-				"mcs [options] source-files\n" +
-				"   --about              About the Mono C# compiler\n" +
+				"Copper compiler, Copyright 2016 SeelLab (@ Louisiana State University)\n" +
+                "mcs [options] source-files\n" +
+				"   --about              About the compiler\n" +
 				"   -addmodule:M1[,Mn]   Adds the module to the generated assembly\n" +
 				"   -checked[+|-]        Sets default aritmetic overflow context\n" +
 				"   -clscheck[+|-]       Disables CLS Compliance verifications\n" +
@@ -1604,7 +1614,7 @@ namespace Mono.CSharp {
 		void Version ()
 		{
 			string version = System.Reflection.MethodBase.GetCurrentMethod ().DeclaringType.Assembly.GetName ().Version.ToString ();
-			output.WriteLine ("Mono C# compiler version {0}", version);
+			output.WriteLine ("Copper compiler version {0}", version);
 		}
 	}
 
