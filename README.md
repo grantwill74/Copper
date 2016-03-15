@@ -4,6 +4,13 @@ a Component Oriented Programming Language (COPL). Copper is
 built on top of the Mono C# Compiler (MCS), and extends C# 
 to have .
 
+## How to Get Copper
+Click on the "releases" tab on github, or follow this link:
+https://github.com/seelprojects/copper/releases
+
+For pre-release version 0.1.0, scroll to the bottom of the page 
+and download the .zip file.
+
 ## Examples
 Sample code is located in the 'examples/' directory. To build 
 the samples, run the file build_examples.bat. These samples 
